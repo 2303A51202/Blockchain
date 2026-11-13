@@ -1,0 +1,5 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}ChainCampus{% endblock %}</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><nav class="nav"><a class="brand" href="/">⬡ ChainCampus</a><div class="navlinks"><a href="/">Dashboard</a>{% if session.get('logged_in') %}<a href="/students">Students</a><a href="/blockchain">Blockchain</a><a href="/logout">Logout</a>{% else %}<a href="/login">Admin Login</a>{% endif %}</div></nav>
+<main class="container">{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}{% block content %}{% endblock %}</main>
+<footer>ChainCampus · Blockchain-based Student Record Management</footer></body></html>

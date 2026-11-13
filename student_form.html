@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}<div class="form-card"><p class="eyebrow">STUDENT PROFILE</p><h1>{{ mode }} student</h1><p class="muted">Required fields are marked with an asterisk.</p><form method="post" class="gridform">
+<div><label>Roll number *</label><input name="roll_no" required value="{{ student.roll_no or '' }}" placeholder="e.g. 2303A51226"></div>
+<div><label>Full name *</label><input name="name" required value="{{ student.name or '' }}" placeholder="Student name"></div>
+<div><label>Course *</label><input name="course" required value="{{ student.course or '' }}" placeholder="e.g. B.Tech CSE"></div>
+<div><label>Year *</label><select name="year" required><option value="">Select year</option>{% for y in ['1st Year','2nd Year','3rd Year','4th Year'] %}<option {{ 'selected' if student.year==y else '' }}>{{ y }}</option>{% endfor %}</select></div>
+<div class="span2"><label>Email</label><input type="email" name="email" value="{{ student.email or '' }}" placeholder="student@example.com"></div>
+<div class="span2 form-actions"><button class="btn primary">{{ 'Save changes' if mode=='Edit' else 'Add student' }} →</button><a class="btn light" href="/students">Cancel</a></div></form></div>{% endblock %}
